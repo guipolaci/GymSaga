@@ -1,0 +1,11 @@
+{
+  "background_color": "#FFF",
+  "display": "standalone",
+  "name": "GymSaga",
+  "short_name": "GymSaga",
+  "version": "com.exercicio.gamificado",
+  "description": "App de exercício gameficado",
+  "author": "TCC",
+  "icons": [],
+  "start_url": "index.html"
+}

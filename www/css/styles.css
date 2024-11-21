@@ -1,0 +1,621 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+.container-fluid {
+    padding: 20px;
+    margin-bottom: 70px; /* Espaço para evitar que o botão fique atrás da navbar */
+    overflow-y: auto; /* Permite rolagem vertical */
+    height: calc(100% - 70px); /* Ajusta o tamanho com base na altura da navbar */
+}
+
+html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Evita rolagem horizontal */
+}
+
+body {
+    background-color: #0a0909;
+    color: #E0E0E0;
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+.login-container {
+    max-width: 400px;
+    margin: 100px auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.btn {
+    background-color: #6a11cb;
+    border: none;
+    color: #E0E0E0;
+    padding: 10px 0;
+    border-radius: 4px;
+    transition: none;
+}
+
+.btn:hover, .btn:focus {
+    background-color: #6a11cb;
+    color: #E0E0E0;
+}
+
+.form-control, .form-select {
+    background-color: transparent;
+    border: 1px solid #6a11cb; 
+    color: #E0E0E0;
+    padding: 10px;
+    margin-bottom: 15px;
+    transition: border-color 0.3s ease-in-out;
+}
+
+.form-control::placeholder, .form-select::placeholder {
+    color: #D3D3D3; 
+}
+
+.form-select:focus, .form-control:focus {
+    background-color: transparent; 
+    border-color: #6a11cb; 
+    color: #E0E0E0;
+    box-shadow: none; 
+    outline: none;
+}
+
+.form-select option {
+    background-color: #121212; 
+    color: #E0E0E0; 
+}
+
+.form-label {
+    display: block;
+    text-align: left;
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: #E0E0E0;
+}
+
+.link {
+    color: #07dde8;
+    text-decoration: none;
+}
+
+.logo {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.logo h1 {
+    font-size: 32px; 
+    font-weight: bold;
+    color: #E0E0E0; 
+    margin: 0;
+}
+
+.logo p {
+    font-size: 16px; 
+    color: #A0A0A0; 
+    margin: 5px 0 0;
+}
+
+.navbar {
+    position: fixed; /* Fixa a posição */
+    bottom: 0; /* Coloca a navbar na parte inferior */
+    width: 100%; /* Garante que ela ocupe toda a largura */
+    z-index: 1000; /* Certifica que fique acima de outros elementos */
+    height: 70px; /* Altura da navbar */
+    background-color: #1a1a1d; /* Cor de fundo para corresponder ao tema */
+    border-top: 2px solid #6a11cb; /* Borda superior */
+}
+
+.custom-navbar {
+    padding: 10px 0;
+    background-color: #f8f9fa;
+}
+
+.custom-navbar a {
+    color: #6a11cb;
+    font-size: 24px;
+}
+
+.custom-navbar a.active {
+    color: #fff;
+}
+
+.custom-navbar .nav-item {
+    flex-grow: 1;
+}
+.custom-navbar .nav-item i {
+    font-size: 24px; 
+    color: #6c757d;
+}
+.custom-navbar .nav-item i:hover {
+    color: #6a11cb; 
+}
+
+.nav-item.active i {
+    color: #6a11cb; 
+}
+
+.ranking-container {
+    padding: 20px;
+}
+
+.ranking-title {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #6a11cb;
+    font-weight: bold;
+    margin: 0 auto 20px; 
+    border: 2px solid #6a11cb; 
+    border-radius: 10px; 
+    padding: 10px;
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    width: fit-content;
+}
+
+.table {
+    border-radius: 12px;
+    overflow: hidden;
+}   
+
+.table th,
+.table td {
+    color: #fff;
+}
+
+.table thead th {
+    background-color: #6a11cb;
+    font-weight: bold;
+}
+
+.perfil-container {
+    max-width: 400px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 20px 0;
+}
+
+.perfil-header {
+    background: transparent;
+    text-align: center;
+}
+
+.foto-user img {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    border: 3px solid #6a11cb;
+}
+
+.nome-user{
+    margin-top: 10px;
+    font-weight: bold;
+    font-size: 22px;
+}
+
+.info-value {
+    color: #07dde8;
+}
+
+.info-label {
+    font-weight: bold;
+}
+
+/* Botões do perfil */
+.profile-opcoes {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 0 20px;
+}
+
+.btn-perfil {
+    background-color: #6a11cb;
+    border: none;
+    color: #E0E0E0;
+    padding: 10px 0;
+    border-radius: 4px;
+    transition: none;
+}
+
+.btn-perfil:hover, .btn-perfil:focus {
+    background-color: #6a11cb;
+    color: #E0E0E0;
+}
+
+/* Estilo específico para o botão de logout */
+.logout-btn {
+    background: #fc466b; /* Vermelho */
+    border: none;
+    color: #E0E0E0;
+    padding: 10px 0;
+    border-radius: 4px;
+    transition: none;
+}
+
+.logout-btn:hover,
+.logout-btn:focus {
+    background: #fc466b; 
+    color: white;
+}
+
+.custom-navbar {
+    background-color: #1a1a1d;
+    padding: 10px 0;
+    border-top: 2px solid #6a11cb;
+}
+
+
+/* Inventário */
+.inventory {
+    padding: 20px;
+    text-align: center;
+}
+
+/* Título */
+.inventory-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin: 0 auto 20px; 
+    color: #6a11cb;
+    margin-bottom: 20px;
+    border: 2px solid #6a11cb; 
+    border-radius: 10px; 
+    padding: 10px;
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    width: fit-content;
+}
+
+/* Barra de pesquisa */
+.inventory-search {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto 20px;
+}
+
+.inventory-search .form-control {
+    width: 100%;
+    padding: 10px 40px 10px 15px; /* Espaço para o ícone */
+    border: 1px solid #6a11cb;
+    border-radius: 4px;
+    background-color: #0a0a0a;
+    color: #E0E0E0;
+    font-size: 1rem;
+}
+
+.inventory-search .form-control::placeholder {
+    color: #A0A0A0;
+}
+
+.inventory-search .search-icon {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.2rem;
+    color: #6a11cb;
+}
+
+/* Grade de itens */
+.inventory-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Três colunas */
+    gap: 10px;
+}
+
+/* Slots do inventário */
+.inventory-slot {
+    background-color: #121212;
+    border: 2px solid #6a11cb;
+    border-radius: 4px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: border-color 0.3s ease;
+}
+
+.inventory-slot:hover {
+    border-color: #07dde8; /* Destaque azul no hover */
+}
+
+/* Itens dentro dos slots */
+.inventory-item {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    margin-bottom: 10px;
+}
+
+.inventory-item-name {
+    font-size: 14px;
+    color: #E0E0E0;
+    font-weight: bold;
+    margin: 5px 0 2px;
+}
+
+.inventory-item-rarity {
+    font-size: 12px;
+    color: #07dde8; /* Azul para raridade */
+}
+
+/* Slots vazios */
+.inventory-slot-empty {
+    font-size: 14px;
+    color: #A0A0A0;
+    font-style: italic;
+}
+
+/* Título */
+.title {
+    font-size: 2rem;
+    color: #6a11cb;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+/* Pré-visualização da foto */
+.foto-preview {
+    margin: 20px auto;
+    width: 100px;
+    height: 100px;
+    border: 3px solid #6a11cb;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.foto-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Inputs */
+.form-label {
+    color: #E0E0E0;
+    margin-bottom: 5px;
+}
+
+.form-control, 
+.form-select {
+    background-color: transparent;
+    color: #E0E0E0;
+    border: 1px solid #6a11cb;
+    border-radius: 4px;
+    padding: 10px;
+}
+
+.form-control::placeholder, 
+.form-select::placeholder {
+    color: #A0A0A0;
+}
+
+.form-control:focus, 
+.form-select:focus {
+    border-color: #5c0fb8;
+    outline: none;
+    box-shadow: none;
+}
+
+/* Botão */
+.btn-perfil {
+    background-color: #6a11cb;
+    color: #E0E0E0;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-perfil:hover {
+    background-color: #5c0fb8;
+}
+
+/* Título da Fase */
+.fase-title {
+    font-size: 2.5rem;
+    color: #6a11cb;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+/* Card de cada treino */
+.fase-card, .treino-card {
+    background-color: #121212;
+    border: 2px solid #6a11cb;
+    border-radius: 12px;
+    padding: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
+
+/* Nome do treino */
+.treino-nome {
+    font-size: 1.5rem;
+    color: #E0E0E0;
+    margin-bottom: 15px;
+}
+
+/* Botão "Começar" */
+.btn-comecar {
+    background-color: #6a11cb;
+    color: #E0E0E0;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-comecar:hover {
+    background-color: #5c0fb8;
+}
+
+/* Status do exercício */
+.descricao {
+    font-size: 1rem;
+    color: #E0E0E0;
+    margin-top: 10px;
+}
+
+.exercicio-container {
+    background-color: #121212;
+    border: 2px solid #6a11cb;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    margin-bottom: 20px;
+}
+
+/* Imagem do Exercício */
+.exercicio-img {
+    width: 100%;
+    max-width: 250px;
+    margin: 20px auto;
+    display: block;
+    border-radius: 12px;
+}
+
+/* Títulos */
+.descricao-titulo, .descricao-exercicio {
+    font-size: 1rem;
+    color: #E0E0E0;
+    margin-top: 10px;
+}
+
+/* Pontos do Exercício */
+.pontos-exercicio {
+    font-size: 1rem;
+    color: #E0E0E0;
+    margin-top: 10px;
+}
+
+.pontos {
+    color: #07dde8; /* Destaque azul */
+    font-weight: bold;
+}
+
+/* Input Group */
+.input-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.input-group .form-control {
+    background-color: transparent;
+    color: #E0E0E0;
+    border: 1px solid #6a11cb;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+.input-group .form-control::placeholder {
+    color: #A0A0A0;
+}
+
+.input-group .form-control:focus {
+    border-color: #5c0fb8;
+    box-shadow: none;
+    outline: none;
+}
+
+/* Botão Finalizar */
+.btn-finalizar {
+    background-color: #6a11cb;
+    color: #E0E0E0;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 20px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-finalizar:hover {
+    background-color: #5c0fb8;
+}
+
+/* Título */
+.home-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin: 0 auto 20px; 
+    color: #6a11cb;
+    margin-bottom: 20px;
+    border: 2px solid #6a11cb; 
+    border-radius: 10px; 
+    padding: 10px;
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    width: fit-content;
+}
+
+/* Container do Mapa */
+.map-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+/* Bolas das Fases */
+.fase {
+    width: 70px;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    border-radius: 50%;
+    color: #fff;
+    background-color: #6a11cb; /* Cor padrão */
+    z-index: 1;
+    position: relative;
+}
+
+/* Diferenciação por Status */
+.fase[data-status="completed"] {
+    background-color: #07dde8; /* Azul para fase concluída */
+}
+
+.fase[data-status="active"] {
+    background-color: #6a11cb; /* Roxo para fase ativa */
+}
+
+.fase[data-status="locked"] {
+    background-color: #444; /* Cinza para fase bloqueada */
+}
+
+/* Caminho Vertical */
+.path.vertical {
+    width: 3px;
+    height: 50px;
+    background-color: #6a11cb; /* Roxo para o caminho */
+    margin: 0 auto;
+}
+
+
+
+
+

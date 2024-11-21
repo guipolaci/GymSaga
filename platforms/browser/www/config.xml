@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.exercicio.gamificado" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>GymSaga</name>
+    <description>App de exercício gameficado</description>
+    <author email="guiziy3424@gmail.com">
+        TCC
+    </author>
+    <content src="index.html" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <preference name="AndroidWindowSplashScreenAnimatedIcon" value="www/img/splash.png" />
+    <preference name="AndroidWindowSplashScreenBackgroundColor" value="#121212" />
+    <preference name="AndroidWindowSplashScreenDuration" value="3000" />
+    <preference name="SplashScreen" value="screen" />
+    <preference name="SplashScreenDelay" value="3000" />
+    <preference name="AutoHideSplashScreen" value="true" />
+    <preference name="ShowSplashScreenSpinner" value="false" />
+</widget>

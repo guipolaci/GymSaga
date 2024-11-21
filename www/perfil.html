@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GymSaga - Perfil</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="css/styles.css" rel="stylesheet">
+</head>
+
+<body onclick="verificarAutenticacao()">
+    <div class="container-fluid">
+        <div class="perfil-container text-center">
+            <div class="perfil-header">
+                <div class="foto-user">
+                    <img src="img/login.png" alt="Foto do Perfil">
+                </div>
+                <h2 class="nome-user">Nome do Usuário</h2>
+            </div>
+
+            <div class="info">
+                <div class="info">
+                    <span class="info-label">Pontos:</span>
+                    <span class="info-value">1200</span>
+                </div>
+                <div class="info">
+                    <span class="info-label">Nível:</span>
+                    <span class="info-value">5</span>
+                </div>
+            </div>
+
+            <div class="profile-opcoes">
+                <button class="btn btn-perfil" onclick="window.location.href='alterarDadosPerfil.html';"><i
+                        class="fas fa-user-edit"></i> Editar Perfil</button>
+                <button class="btn btn-perfil" onclick="window.location.href='inventario.html';"><i
+                        class="fas fa-box-open"></i> Inventário</button>
+                <button class="btn logout-btn" onclick="logout()"><i class="fas fa-door-open"></i> Sair</button>
+            </div>
+        </div>
+    </div>
+
+    <nav class="navbar fixed-bottom navbar-light bg-light custom-navbar">
+        <div class="container d-flex justify-content-around">
+            <a href="ranking.html" class="nav-item text-center">
+                <i class="fas fa-trophy"></i>
+            </a>
+
+            <a href="home.html" class="nav-item text-center">
+                <i class="fas fa-flag-checkered"></i>
+            </a>
+
+            <a href="perfil.html" class="nav-item text-center active">
+                <i class="fas fa-user"></i>
+            </a>
+        </div>
+    </nav>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/index.js"></script>
+    <script>
+        function logout() {
+            document.cookie = "user_id=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
+            window.location.href = "index.html";
+        }
+    </script>
+</body>
+
+</html>

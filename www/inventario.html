@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventário - GymSaga</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="css/styles.css" rel="stylesheet">
+</head>
+
+<body onclick="verificarAutenticacao()">
+    <div class="container-fluid">
+        <section class="inventory">
+            <h2 class="inventory-title">Inventário</h2>
+            <div class="inventory-search">
+                <input type="text" class="form-control" placeholder="Pesquisar item">
+                <i class="fas fa-search search-icon"></i>
+            </div>
+            <div class="inventory-grid">
+                <!-- Exemplo de itens no inventário -->
+                <div class="inventory-slot">
+                    <img src="sword.png" alt="Espada" class="inventory-item">
+                    <p class="inventory-item-name">Espada</p>
+                    <p class="inventory-item-rarity">Comum</p>
+                </div>
+                <div class="inventory-slot">
+                    <img src="shield.png" alt="Escudo" class="inventory-item">
+                    <p class="inventory-item-name">Escudo</p>
+                    <p class="inventory-item-rarity">Raro</p>
+                </div>
+                <!-- Slots vazios -->
+                <div class="inventory-slot">
+                    <p class="inventory-slot-empty">Vazio</p>
+                </div>
+                <div class="inventory-slot">
+                    <p class="inventory-slot-empty">Vazio</p>
+                </div>
+                <div class="inventory-slot">
+                    <p class="inventory-slot-empty">Vazio</p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <nav class="navbar fixed-bottom navbar-light bg-light custom-navbar">
+        <div class="container d-flex justify-content-around">
+            <a href="ranking.html" class="nav-item text-center">
+                <i class="fas fa-trophy"></i>
+            </a>
+
+            <a href="home.html" class="nav-item text-center">
+                <i class="fas fa-flag-checkered"></i>
+            </a>
+
+            <a href="perfil.html" class="nav-item text-center active">
+                <i class="fas fa-user"></i>
+            </a>
+        </div>
+    </nav>
+
+    <script src="js/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
