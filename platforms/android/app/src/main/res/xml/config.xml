@@ -10,14 +10,19 @@
         <param name="android-package" value="org.apache.cordova.splashscreen.SplashScreen" />
         <param name="onload" value="true" />
     </feature>
+    <feature name="Whitelist">
+        <param name="android-package" value="org.apache.cordova.whitelist.WhitelistPlugin" />
+        <param name="onload" value="true" />
+    </feature>
     <name>GymSaga</name>
     <description>App de exercício gameficado</description>
     <author email="guiziy3424@gmail.com">
         TCC
     </author>
     <content src="index.html" />
-    <allow-intent href="http://*/*" />
-    <allow-intent href="https://*/*" />
+    <access origin="*" />
+    <allow-navigation href="*" />
+    <allow-intent href="*" />
     <icon density="ldpi" src="www/img/logo.png" />
     <icon density="mdpi" src="www/img/logo.png" />
     <icon density="hdpi" src="www/img/logo.png" />

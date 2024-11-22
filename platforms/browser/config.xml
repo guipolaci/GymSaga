@@ -6,8 +6,9 @@
         TCC
     </author>
     <content src="index.html" />
-    <allow-intent href="http://*/*" />
-    <allow-intent href="https://*/*" />
+    <access origin="*" />
+    <allow-navigation href="*" />
+    <allow-intent href="*" />
     <preference name="AndroidWindowSplashScreenAnimatedIcon" value="www/img/splash.png" />
     <preference name="AndroidWindowSplashScreenBackgroundColor" value="#121212" />
     <preference name="AndroidWindowSplashScreenDuration" value="3000" />

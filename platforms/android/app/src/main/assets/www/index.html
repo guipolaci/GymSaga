@@ -27,12 +27,13 @@
                 <label class="form-check-label me-1" for="mostrarSenha">Mostrar senha</label>
                 <input type="checkbox" class="form-check-input" id="mostrarSenha">
             </div>
-            <button type="submit" class="btn btn w-100">Entrar</button>
+            <button type="submit" class="btn btn w-100" onclick="fazerLogin(event)">Entrar</button>
             <p class="text-center mt-3">
             <p>Não tem conta? <a href="cadastro.html" class="link">Cadastrar</a></p>
             </p>
             <p>Ir para home (testes) <a href="home.html" class="link">IR</a></p>
         </form>
+        <p id="loginMessage"></p>
     </div>
 
     <script src="js/index.js"></script>

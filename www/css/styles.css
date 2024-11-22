@@ -198,18 +198,33 @@ body {
     border: 3px solid #6a11cb;
 }
 
-.nome-user{
+.nomeUsuario{
     margin-top: 10px;
     font-weight: bold;
     font-size: 22px;
 }
 
-.info-value {
-    color: #07dde8;
+.emailUsuario{
+    color: #8d8b8b;
+    font-size: 14px;
+    margin-top: -10px;
 }
 
-.info-label {
+.info {
+    margin-top: -8px;
+    margin-bottom: -8px;
+    display: flex;
+    justify-content: center;
+    gap: 7px;
+    font-size: 16px;
+}
+
+.info .info-label {
     font-weight: bold;
+}
+
+.info p {
+    color: #00bfff; 
 }
 
 /* Botões do perfil */

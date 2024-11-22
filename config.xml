@@ -6,8 +6,9 @@
         TCC
     </author>
     <content src="index.html" />
-    <allow-intent href="http://*/*" />
-    <allow-intent href="https://*/*" />
+    <access origin="*" />
+    <allow-navigation href="*" />
+    <allow-intent href="*" />
 
     <platform name="android">
     <icon src="www/img/logo.png" density="ldpi" />

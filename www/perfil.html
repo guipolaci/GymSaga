@@ -10,24 +10,25 @@
     <link href="css/styles.css" rel="stylesheet">
 </head>
 
-<body onclick="verificarAutenticacao()">
+<body onload="carregaPerfil(); verificarAutenticacao()">
     <div class="container-fluid">
         <div class="perfil-container text-center">
             <div class="perfil-header">
                 <div class="foto-user">
-                    <img src="img/login.png" alt="Foto do Perfil">
+                    <img src="img/login.png" alt="Foto do Perfil" id="fotoUsuario">
                 </div>
-                <h2 class="nome-user">Nome do Usuário</h2>
+                <h2 class="nomeUsuario" id="nomeUsuario"></h2>
+                <p class="emailUsuario" id="emailUsuario"></p>
             </div>
 
             <div class="info">
                 <div class="info">
                     <span class="info-label">Pontos:</span>
-                    <span class="info-value">1200</span>
+                    <p class="pontosUsuario" id="pontosUsuario"></p>
                 </div>
                 <div class="info">
                     <span class="info-label">Nível:</span>
-                    <span class="info-value">5</span>
+                    <p class="nivelUsuario" id="nivelUsuario"></p>
                 </div>
             </div>
 

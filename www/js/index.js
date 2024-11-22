@@ -69,7 +69,7 @@ function cadastrarUsuario(event) {
     }
 
     const xmlhttp = new XMLHttpRequest();
-    xmlhttp.open('POST', 'http://testesw.infinityfreeapp.com/servidor/cadastro.php', true);
+    xmlhttp.open('POST', 'http://localhost/gymsaga/cadastro.php', true);
     xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     xmlhttp.onload = function () {
         console.log(this.responseText);
@@ -130,7 +130,7 @@ function enviarFormulario(event) {
     const altura = document.getElementById('altura').value;
 
     const xmlhttp = new XMLHttpRequest();
-    xmlhttp.open('POST', 'http://testesw.infinityfreeapp.com/servidor/formulario.php', true);
+    xmlhttp.open('POST', 'http://localhost/gymsaga/formulario.php', true);
     xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
     xmlhttp.onload = function () {
@@ -166,7 +166,7 @@ function fazerLogin(event) {
     mensagem.textContent = '';
 
     const xmlhttp = new XMLHttpRequest();
-    xmlhttp.open('POST', 'http://testesw.infinityfreeapp.com/servidor/index.php', true);
+    xmlhttp.open('POST', 'http://localhost/gymsaga/index.php', true);
     xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     xmlhttp.onload = function () {
         console.log(this.responseText);
@@ -198,6 +198,182 @@ function fazerLogin(event) {
     };
 
     xmlhttp.send(`email=${email}&senha=${senha}`);
+}
+
+function carregaPerfil() {
+    const user_id = verificarAutenticacao();
+
+    if (!user_id) {
+        console.error("Usuário não autenticado.");
+        return;
+    }
+
+    const xmlhttp = new XMLHttpRequest();
+    xmlhttp.open('POST', 'http://localhost/GymSaga/carregaPerfil.php', true);
+    xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+    xmlhttp.onload = function () {
+        console.log(this.responseText);
+        try {
+            const resposta = JSON.parse(this.responseText);
+            if (resposta.status === 'success') {
+                console.log("Resposta completa:", resposta);
+                console.log("Conteúdo de resposta.data:", resposta.data);
+                const { nome, pontos, nivel, foto, email } = resposta.data;
+                document.getElementById('nomeUsuario').textContent = nome;
+                document.getElementById('pontosUsuario').textContent = pontos;
+                document.getElementById('nivelUsuario').textContent = nivel;
+                document.getElementById('emailUsuario').textContent = email;
+
+                const fotoUsuario = document.getElementById('fotoUsuario');
+                if (foto && fotoUsuario) {
+                    fotoUsuario.src = `http://localhost/gymsaga/${foto}`;
+                }
+
+            } else {
+                console.error("Erro ao carregar perfil:", resposta.message);
+            }
+        } catch (error) {
+            console.error("Erro ao processar os dados do perfil:", error);
+        }
+    };
+
+    xmlhttp.send(`user_id=${user_id}`);
+}
+
+function carregarDadosParaEdicao() {
+    const user_id = verificarAutenticacao();
+
+    if (!user_id) {
+        console.error("Usuário não autenticado.");
+        return;
+    }
+
+    const xmlhttp = new XMLHttpRequest();
+    xmlhttp.open('POST', 'http://localhost/GymSaga/carregaPerfil.php', true);
+    xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+    xmlhttp.onload = function () {
+        try {
+            const resposta = JSON.parse(this.responseText);
+
+            if (resposta.status === 'success') {
+                const { nome, sexo, peso, altura, foto, data_nasc } = resposta.data;
+
+                document.getElementById('nome').value = nome;
+                document.getElementById('sexo').value = sexo;
+                document.getElementById('peso').value = peso;
+                document.getElementById('altura').value = altura;
+                document.getElementById('data-nascimento').value = data_nasc;
+
+                if (foto) {
+                    const fotoPreview = document.createElement('img');
+                    fotoPreview.src = foto;
+                    fotoPreview.alt = "Foto Atual";
+                    fotoPreview.style.maxWidth = "100px";
+                    document.getElementById('foto-preview').appendChild(fotoPreview);
+                }
+            } else {
+                console.error("Erro ao carregar dados do perfil:", resposta.message);
+            }
+        } catch (error) {
+            console.error("Erro ao processar os dados do perfil:", error);
+        }
+    };
+
+    xmlhttp.send(`user_id=${user_id}`);
+}
+
+function salvarAlteracoesPerfil(event) {
+    event.preventDefault();
+    const user_id = verificarAutenticacao();
+
+    if (!user_id) {
+        console.error("Usuário não autenticado.");
+        return;
+    }
+    const mensagem = document.getElementById('perfilMessage');
+    const nome = document.getElementById('nome').value;
+    const sexo = document.getElementById('sexo').value;
+    const peso = document.getElementById('peso').value;
+    const altura = document.getElementById('altura').value;
+    const dataNascimento = document.getElementById('data-nascimento').value;
+    const fotoInput = document.getElementById('foto');
+    const foto = fotoInput.files[0];
+
+    mensagem.textContent = '';
+
+    const formData = new FormData();
+    formData.append('user_id', user_id);
+    formData.append('nome', nome);
+    formData.append('sexo', sexo);
+    formData.append('peso', peso);
+    formData.append('altura', altura);
+    formData.append('data_nasc', dataNascimento);
+    if (foto) {
+        formData.append('foto', foto);
+    }
+
+    const xmlhttp = new XMLHttpRequest();
+    xmlhttp.open('POST', 'http://localhost/GymSaga/atualizaPerfil.php', true);
+
+    xmlhttp.onload = function () {
+        console.log(this.responseText);
+        try {
+            const resposta = JSON.parse(this.responseText);
+            if (resposta.status === 'success') {
+                console.log(resposta.message);
+                mensagem.textContent = 'Perfil atualizado com sucesso!';
+                mensagem.style.color = 'green';
+                setTimeout(() => window.location.href = 'perfil.html', 1000);
+            } else {
+                console.log("Erro ao salvar alterações:", resposta.message);
+                mensagem.textContent = 'Erro ao salvar alterações:' + resposta.message;
+                mensagem.style.color = 'red';
+            }
+        } catch (error) {
+            console.error("Erro ao processar a resposta:", error);
+        }
+    };
+
+    xmlhttp.send(formData);
+}
+
+function carregarRanking() {
+    const xmlhttp = new XMLHttpRequest();
+    xmlhttp.open('GET', 'http://localhost/GymSaga/carregaRanking.php', true);
+
+    xmlhttp.onload = function () {
+        console.log(this.responseText);
+        try {
+            const resposta = JSON.parse(this.responseText);
+
+            if (resposta.status === 'success') {
+                const ranking = resposta.data;
+                const rankingBody = document.getElementById('rankingBody');
+
+                rankingBody.innerHTML = '';
+
+                ranking.forEach((usuario, index) => {
+                    const row = document.createElement('tr');
+
+                    row.innerHTML = `
+                        <td>${index + 1}</td>
+                        <td>${usuario.nome}</td>
+                        <td>${usuario.pontos}</td>
+                    `;
+
+                    rankingBody.appendChild(row);
+                });
+            } else {
+                console.error("Erro ao carregar ranking:", resposta.message);
+            }
+        } catch (error) {
+            console.error("Erro ao processar a resposta do ranking:", error);
+        }
+    };
+
+    xmlhttp.send();
 }
 
 

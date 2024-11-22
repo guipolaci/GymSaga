@@ -50,7 +50,8 @@ module.exports.metadata =
 {
     "cordova-plugin-device": "3.0.0",
     "cordova-plugin-dialogs": "2.0.2",
-    "cordova-plugin-splashscreen": "6.0.1"
+    "cordova-plugin-splashscreen": "6.0.1",
+    "cordova-plugin-whitelist": "1.3.4"
 }
 // BOTTOM OF METADATA
 });
