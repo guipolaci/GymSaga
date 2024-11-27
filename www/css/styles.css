@@ -296,40 +296,33 @@ body {
 }
 
 /* Barra de pesquisa */
-.inventory-search {
-    position: relative;
-    width: 100%;
-    max-width: 400px;
-    margin: 0 auto 20px;
+.inventory-filters {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
 }
 
-.inventory-search .form-control {
-    width: 100%;
-    padding: 10px 40px 10px 15px; /* Espaço para o ícone */
-    border: 1px solid #6a11cb;
-    border-radius: 4px;
-    background-color: #0a0a0a;
+.btn-filter {
+    padding: 10px 15px;
+    border: 2px solid #6a11cb;
+    background-color: #0a0909; 
     color: #E0E0E0;
-    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
-.inventory-search .form-control::placeholder {
-    color: #A0A0A0;
+.btn-filter:hover {
+    background-color: #6a11cb; 
+    color: #E0E0E0; 
 }
 
-.inventory-search .search-icon {
-    position: absolute;
-    right: 15px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 1.2rem;
-    color: #6a11cb;
-}
 
 /* Grade de itens */
 .inventory-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Três colunas */
+    grid-template-columns: repeat(3, 1fr); 
     gap: 10px;
 }
 
@@ -371,7 +364,7 @@ body {
 }
 
 /* Slots vazios */
-.inventory-slot-empty {
+.inventory-empty {
     font-size: 14px;
     color: #A0A0A0;
     font-style: italic;
@@ -589,45 +582,41 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
     margin-top: 20px;
 }
 
-/* Bolas das Fases */
 .fase {
-    width: 70px;
-    height: 70px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 1.5rem;
-    font-weight: bold;
-    border-radius: 50%;
+    font-size: 18px;
+    margin: 10px 0;
     color: #fff;
-    background-color: #6a11cb; /* Cor padrão */
-    z-index: 1;
-    position: relative;
+    cursor: default;
 }
 
-/* Diferenciação por Status */
-.fase[data-status="completed"] {
-    background-color: #07dde8; /* Azul para fase concluída */
+.fase.completed {
+    background-color: #5cb85c; /* Verde */
+    cursor: pointer;
 }
 
-.fase[data-status="active"] {
-    background-color: #6a11cb; /* Roxo para fase ativa */
+.fase.active {
+    background-color: #6a11cb; /* Roxo */
+    cursor: pointer;
 }
 
-.fase[data-status="locked"] {
-    background-color: #444; /* Cinza para fase bloqueada */
+.fase.locked {
+    background-color: #ccc; /* Cinza */
+    cursor: not-allowed;
 }
 
-/* Caminho Vertical */
 .path.vertical {
-    width: 3px;
-    height: 50px;
-    background-color: #6a11cb; /* Roxo para o caminho */
-    margin: 0 auto;
+    width: 2px;
+    height: 20px;
+    background-color: #6a11cb;
 }
 
 

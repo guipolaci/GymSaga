@@ -10,7 +10,7 @@
     <link href="css/styles.css" rel="stylesheet">
 </head>
 
-<body onclick="verificarAutenticacao()">
+<body onload="carregarInventario(); verificarAutenticacao()">
     <div class="container-fluid">
         <section class="inventory">
             <h2 class="inventory-title">Inventário</h2>
@@ -18,30 +18,9 @@
                 <input type="text" class="form-control" placeholder="Pesquisar item">
                 <i class="fas fa-search search-icon"></i>
             </div>
-            <div class="inventory-grid">
-                <!-- Exemplo de itens no inventário -->
-                <div class="inventory-slot">
-                    <img src="sword.png" alt="Espada" class="inventory-item">
-                    <p class="inventory-item-name">Espada</p>
-                    <p class="inventory-item-rarity">Comum</p>
-                </div>
-                <div class="inventory-slot">
-                    <img src="shield.png" alt="Escudo" class="inventory-item">
-                    <p class="inventory-item-name">Escudo</p>
-                    <p class="inventory-item-rarity">Raro</p>
-                </div>
-                <!-- Slots vazios -->
-                <div class="inventory-slot">
-                    <p class="inventory-slot-empty">Vazio</p>
-                </div>
-                <div class="inventory-slot">
-                    <p class="inventory-slot-empty">Vazio</p>
-                </div>
-                <div class="inventory-slot">
-                    <p class="inventory-slot-empty">Vazio</p>
-                </div>
-            </div>
-        </section>
+            <div class="inventory-grid"></div>
+    </div>
+    </section>
 
     </div>
 

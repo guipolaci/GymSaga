@@ -1,4 +1,4 @@
- function mostrarSenha(inputId, checkId) {
+function mostrarSenha(inputId, checkId) {
     document.getElementById(checkId).addEventListener('change', function () {
         const senhaInput = document.getElementById(inputId);
         senhaInput.type = this.checked ? 'text' : 'password';
@@ -115,11 +115,6 @@ function enviarFormulario(event) {
     const mensagem = document.getElementById('formMessage');
 
     const user_id = verificarAutenticacao();
-    if (!user_id) {
-        mensagem.textContent = "Erro: Usuário não autenticado.";
-        mensagem.style.color = "red";
-        return;
-    }
 
     const local = document.getElementById('local').value;
     const objetivo = document.getElementById('objetivo').value;
@@ -202,11 +197,6 @@ function fazerLogin(event) {
 
 function carregaPerfil() {
     const user_id = verificarAutenticacao();
-
-    if (!user_id) {
-        console.error("Usuário não autenticado.");
-        return;
-    }
 
     const xmlhttp = new XMLHttpRequest();
     xmlhttp.open('POST', 'http://localhost/GymSaga/carregaPerfil.php', true);
@@ -342,6 +332,7 @@ function salvarAlteracoesPerfil(event) {
 function carregarRanking() {
     const xmlhttp = new XMLHttpRequest();
     xmlhttp.open('GET', 'http://localhost/GymSaga/carregaRanking.php', true);
+    xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
     xmlhttp.onload = function () {
         console.log(this.responseText);
@@ -375,6 +366,98 @@ function carregarRanking() {
 
     xmlhttp.send();
 }
+
+function carregarInventario(raridade = 'Todas') {
+    const user_id = verificarAutenticacao();
+
+    const xmlhttp = new XMLHttpRequest();
+    xmlhttp.open('POST', 'http://localhost/GymSaga/inventario.php', true);
+    xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+    xmlhttp.onload = function () {
+        console.log(this.responseText);
+        try {
+            const resposta = JSON.parse(this.responseText);
+            const inventoryGrid = document.querySelector('.inventory-grid');
+
+            inventoryGrid.innerHTML = '';
+
+            if (resposta.status === 'success') {
+                resposta.itens.forEach(item => {
+                    if (raridade === 'Todas' || item.raridade === raridade) {
+                        const slot = document.createElement('div');
+                        slot.className = 'inventory-slot';
+                        slot.id = `item-${item.item_id}`;
+                        slot.innerHTML = `
+                            <p class="inventory-item-name">${item.item_nome}</p>
+                            <p class="inventory-item-rarity">${item.raridade}</p>
+                        `;
+                        inventoryGrid.appendChild(slot);
+                    }
+                });
+
+                if (inventoryGrid.innerHTML === '') {
+                    inventoryGrid.innerHTML = '<p class="inventory-empty">Nenhum item encontrado para essa raridade.</p>';
+                }
+            } else {
+                inventoryGrid.innerHTML = '<p class="inventory-empty">Você não possui nenhum item.</p>';
+            }
+        } catch (error) {
+            console.error("Erro ao processar a resposta do inventário:", error);
+        }
+    };
+    xmlhttp.send(`user_id=${user_id}`);
+}
+
+function carregarMapaDeFases() {
+    const user_id = verificarAutenticacao();
+
+    const xmlhttp = new XMLHttpRequest();
+    xmlhttp.open('POST', 'http://localhost/gymsaga/mapa_fases.php', true);
+    xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+    xmlhttp.onload = function () {
+        console.log(this.responseText);
+        try {
+            const resposta = JSON.parse(this.responseText);
+            const mapContainer = document.querySelector('.map-container');
+
+            mapContainer.innerHTML = ''; 
+
+            if (resposta.status === 'success') {
+                resposta.fases.forEach((fase, index) => {
+                    const faseDiv = document.createElement('div');
+                    faseDiv.className = `fase ${fase.fase_status}`;
+                    faseDiv.id = `fase-${fase.fase_id}`;
+                    faseDiv.textContent = index + 1;
+
+                    if (fase.fase_status === 'active') {
+                        faseDiv.onclick = () => {
+                            window.location.href = `fase.html?fase_id=${fase.fase_id}`;
+                        };
+                    }
+
+                    mapContainer.appendChild(faseDiv);
+
+                    if (index < resposta.fases.length - 1) {
+                        const path = document.createElement('div');
+                        path.className = 'path vertical';
+                        mapContainer.appendChild(path);
+                    }
+                });
+            } else {
+                mapContainer.innerHTML = '<p>Você não possui fases associadas.</p>';
+            }
+        } catch (error) {
+            console.error('Erro ao processar mapa de fases:', error);
+        }
+    };
+
+    xmlhttp.send(`user_id=${user_id}`);
+}
+
+
+
 
 
 
