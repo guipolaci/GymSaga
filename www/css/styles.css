@@ -7,16 +7,16 @@
 
 .container-fluid {
     padding: 20px;
-    margin-bottom: 70px; /* Espaço para evitar que o botão fique atrás da navbar */
-    overflow-y: auto; /* Permite rolagem vertical */
-    height: calc(100% - 70px); /* Ajusta o tamanho com base na altura da navbar */
+    margin-bottom: 70px;
+    overflow-y: auto;
+    height: calc(100% - 70px);
 }
 
 html {
     height: 100%;
     margin: 0;
     padding: 0;
-    overflow-x: hidden; /* Evita rolagem horizontal */
+    overflow-x: hidden; 
 }
 
 body {
@@ -107,13 +107,13 @@ body {
 }
 
 .navbar {
-    position: fixed; /* Fixa a posição */
-    bottom: 0; /* Coloca a navbar na parte inferior */
-    width: 100%; /* Garante que ela ocupe toda a largura */
-    z-index: 1000; /* Certifica que fique acima de outros elementos */
-    height: 70px; /* Altura da navbar */
-    background-color: #1a1a1d; /* Cor de fundo para corresponder ao tema */
-    border-top: 2px solid #6a11cb; /* Borda superior */
+    position: fixed; 
+    bottom: 0; 
+    width: 100%; 
+    z-index: 1000;
+    height: 70px;
+    background-color: #1a1a1d; 
+    border-top: 2px solid #6a11cb; 
 }
 
 .custom-navbar {
@@ -227,7 +227,6 @@ body {
     color: #00bfff; 
 }
 
-/* Botões do perfil */
 .profile-opcoes {
     margin-top: 15px;
     display: flex;
@@ -250,7 +249,6 @@ body {
     color: #E0E0E0;
 }
 
-/* Estilo específico para o botão de logout */
 .logout-btn {
     background: #fc466b; /* Vermelho */
     border: none;
@@ -272,14 +270,11 @@ body {
     border-top: 2px solid #6a11cb;
 }
 
-
-/* Inventário */
 .inventory {
     padding: 20px;
     text-align: center;
 }
 
-/* Título */
 .inventory-title {
     font-size: 2.5rem;
     font-weight: bold;
@@ -295,7 +290,6 @@ body {
     width: fit-content;
 }
 
-/* Barra de pesquisa */
 .inventory-filters {
     display: flex;
     justify-content: center;
@@ -318,15 +312,12 @@ body {
     color: #E0E0E0; 
 }
 
-
-/* Grade de itens */
 .inventory-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr); 
     gap: 10px;
 }
 
-/* Slots do inventário */
 .inventory-slot {
     background-color: #121212;
     border: 2px solid #6a11cb;
@@ -340,10 +331,9 @@ body {
 }
 
 .inventory-slot:hover {
-    border-color: #07dde8; /* Destaque azul no hover */
+    border-color: #07dde8; 
 }
 
-/* Itens dentro dos slots */
 .inventory-item {
     width: 50px;
     height: 50px;
@@ -360,7 +350,7 @@ body {
 
 .inventory-item-rarity {
     font-size: 12px;
-    color: #07dde8; /* Azul para raridade */
+    color: #07dde8; 
 }
 
 /* Slots vazios */
@@ -370,7 +360,6 @@ body {
     font-style: italic;
 }
 
-/* Título */
 .title {
     font-size: 2rem;
     color: #6a11cb;
@@ -378,7 +367,6 @@ body {
     text-transform: uppercase;
 }
 
-/* Pré-visualização da foto */
 .foto-preview {
     margin: 20px auto;
     width: 100px;
@@ -394,7 +382,6 @@ body {
     object-fit: cover;
 }
 
-/* Inputs */
 .form-label {
     color: #E0E0E0;
     margin-bottom: 5px;
@@ -421,7 +408,7 @@ body {
     box-shadow: none;
 }
 
-/* Botão */
+
 .btn-perfil {
     background-color: #6a11cb;
     color: #E0E0E0;
@@ -435,7 +422,6 @@ body {
     background-color: #5c0fb8;
 }
 
-/* Título da Fase */
 .fase-title {
     font-size: 2.5rem;
     color: #6a11cb;
@@ -443,7 +429,6 @@ body {
     font-weight: bold;
 }
 
-/* Card de cada treino */
 .fase-card, .treino-card {
     background-color: #121212;
     border: 2px solid #6a11cb;
@@ -454,14 +439,12 @@ body {
     text-align: center;
 }
 
-/* Nome do treino */
 .treino-nome {
     font-size: 1.5rem;
     color: #E0E0E0;
     margin-bottom: 15px;
 }
 
-/* Botão "Começar" */
 .btn-comecar {
     background-color: #6a11cb;
     color: #E0E0E0;
@@ -476,7 +459,6 @@ body {
     background-color: #5c0fb8;
 }
 
-/* Status do exercício */
 .descricao {
     font-size: 1rem;
     color: #E0E0E0;
@@ -492,7 +474,6 @@ body {
     margin-bottom: 20px;
 }
 
-/* Imagem do Exercício */
 .exercicio-img {
     width: 100%;
     max-width: 250px;
@@ -501,14 +482,14 @@ body {
     border-radius: 12px;
 }
 
-/* Títulos */
+
 .descricao-titulo, .descricao-exercicio {
     font-size: 1rem;
     color: #E0E0E0;
     margin-top: 10px;
 }
 
-/* Pontos do Exercício */
+
 .pontos-exercicio {
     font-size: 1rem;
     color: #E0E0E0;
@@ -520,7 +501,7 @@ body {
     font-weight: bold;
 }
 
-/* Input Group */
+
 .input-group {
     display: flex;
     gap: 10px;
@@ -546,7 +527,7 @@ body {
     outline: none;
 }
 
-/* Botão Finalizar */
+
 .btn-finalizar {
     background-color: #6a11cb;
     color: #E0E0E0;
@@ -561,7 +542,7 @@ body {
     background-color: #5c0fb8;
 }
 
-/* Título */
+
 .home-title {
     font-size: 2.5rem;
     font-weight: bold;
@@ -577,7 +558,7 @@ body {
     width: fit-content;
 }
 
-/* Container do Mapa */
+
 .map-container {
     display: flex;
     flex-direction: column;
