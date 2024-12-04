@@ -10,7 +10,7 @@
     <link href="css/styles.css" rel="stylesheet">
 </head>
 
-<body onclick="verificarAutenticacao()">
+<body onload="verificarAutenticacao(); carregarRanking()">
     <div class="container-fluid">
         <div class="ranking-container">
             <h1 class="ranking-title">Tabela dos Líderes</h1>
@@ -22,22 +22,7 @@
                         <th>Pontos</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>João Silva</td>
-                        <td>1200</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Maria Oliveira</td>
-                        <td>1150</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Pedro Santos</td>
-                        <td>1100</td>
-                    </tr>
+                <tbody id="rankingBody">
                 </tbody>
             </table>
         </div>

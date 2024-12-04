@@ -28,6 +28,10 @@ function deletarCookie(nome) {
 }
 
 function logout() {
+    abrirModal('modalLogout');
+}
+
+function confirmarLogout() {
     deletarCookie('user_id');
     window.location.href = "index.html";
 }
@@ -69,7 +73,8 @@ function cadastrarUsuario(event) {
     }
 
     const xmlhttp = new XMLHttpRequest();
-    xmlhttp.open('POST', 'http://localhost/gymsaga/cadastro.php', true);
+    xmlhttp.open('POST', 'https://solumidia.com.br/etec/cadastro.php', true);
+    //xmlhttp.open('POST', 'http://localhost/gymsaga/cadastro.php', true);
     xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     xmlhttp.onload = function () {
         console.log(this.responseText);
@@ -125,7 +130,8 @@ function enviarFormulario(event) {
     const altura = document.getElementById('altura').value;
 
     const xmlhttp = new XMLHttpRequest();
-    xmlhttp.open('POST', 'http://localhost/gymsaga/formulario.php', true);
+    xmlhttp.open('POST', 'https://solumidia.com.br/etec/formulario.php', true);
+    //xmlhttp.open('POST', 'http://localhost/gymsaga/formulario.php', true);
     xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
     xmlhttp.onload = function () {
@@ -136,7 +142,7 @@ function enviarFormulario(event) {
             if (resposta.status === 'success') {
                 mensagem.textContent = resposta.message;
                 mensagem.style.color = "green";
-                setTimeout(() => window.location.href = 'home.html', 1000);
+                setTimeout(() => window.location.href = 'home.html?modal=modalBoasVindas', 1000);
             } else {
                 mensagem.textContent = resposta.message;
                 mensagem.style.color = "red";
@@ -161,7 +167,8 @@ function fazerLogin(event) {
     mensagem.textContent = '';
 
     const xmlhttp = new XMLHttpRequest();
-    xmlhttp.open('POST', 'http://localhost/gymsaga/index.php', true);
+    xmlhttp.open('POST', 'https://solumidia.com.br/etec/index.php', true);
+    //xmlhttp.open('POST', 'http://localhost/gymsaga/index.php', true);
     xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     xmlhttp.onload = function () {
         console.log(this.responseText);
@@ -199,7 +206,8 @@ function carregaPerfil() {
     const user_id = verificarAutenticacao();
 
     const xmlhttp = new XMLHttpRequest();
-    xmlhttp.open('POST', 'http://localhost/GymSaga/carregaPerfil.php', true);
+    xmlhttp.open('POST', 'https://solumidia.com.br/etec/carregaPerfil.php', true);
+    //xmlhttp.open('POST', 'http://localhost/GymSaga/carregaPerfil.php', true);
     xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
     xmlhttp.onload = function () {
@@ -217,7 +225,7 @@ function carregaPerfil() {
 
                 const fotoUsuario = document.getElementById('fotoUsuario');
                 if (foto && fotoUsuario) {
-                    fotoUsuario.src = `http://localhost/gymsaga/${foto}`;
+                    fotoUsuario.src = `https://solumidia.com.br/etec/${foto}`;
                 }
 
             } else {
@@ -240,7 +248,8 @@ function carregarDadosParaEdicao() {
     }
 
     const xmlhttp = new XMLHttpRequest();
-    xmlhttp.open('POST', 'http://localhost/GymSaga/carregaPerfil.php', true);
+    xmlhttp.open('POST', 'https://solumidia.com.br/etec/carregaPerfil.php', true);
+    //xmlhttp.open('POST', 'http://localhost/GymSaga/carregaPerfil.php', true);
     xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
     xmlhttp.onload = function () {
@@ -305,7 +314,8 @@ function salvarAlteracoesPerfil(event) {
     }
 
     const xmlhttp = new XMLHttpRequest();
-    xmlhttp.open('POST', 'http://localhost/GymSaga/atualizaPerfil.php', true);
+    xmlhttp.open('POST', 'https://solumidia.com.br/etec/atualizaPerfil.php', true);
+    //xmlhttp.open('POST', 'http://localhost/GymSaga/atualizaPerfil.php', true);
 
     xmlhttp.onload = function () {
         console.log(this.responseText);
@@ -331,7 +341,8 @@ function salvarAlteracoesPerfil(event) {
 
 function carregarRanking() {
     const xmlhttp = new XMLHttpRequest();
-    xmlhttp.open('GET', 'http://localhost/GymSaga/carregaRanking.php', true);
+    xmlhttp.open('POST', 'https://solumidia.com.br/etec/carregaRanking.php', true);
+    //xmlhttp.open('GET', 'http://localhost/GymSaga/carregaRanking.php', true);
     xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
     xmlhttp.onload = function () {
@@ -371,7 +382,8 @@ function carregarInventario(raridade = 'Todas') {
     const user_id = verificarAutenticacao();
 
     const xmlhttp = new XMLHttpRequest();
-    xmlhttp.open('POST', 'http://localhost/GymSaga/inventario.php', true);
+    xmlhttp.open('POST', 'https://solumidia.com.br/etec/inventario.php', true);
+    //xmlhttp.open('POST', 'http://localhost/GymSaga/inventario.php', true);
     xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
     xmlhttp.onload = function () {
@@ -413,7 +425,7 @@ function carregarMapaDeFases() {
     const user_id = verificarAutenticacao();
 
     const xmlhttp = new XMLHttpRequest();
-    xmlhttp.open('POST', 'http://localhost/gymsaga/mapa_fases.php', true);
+    xmlhttp.open('POST', 'https://solumidia.com.br/etec/mapa_fases.php', true);
     xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
     xmlhttp.onload = function () {
@@ -422,7 +434,7 @@ function carregarMapaDeFases() {
             const resposta = JSON.parse(this.responseText);
             const mapContainer = document.querySelector('.map-container');
 
-            mapContainer.innerHTML = ''; 
+            mapContainer.innerHTML = '';
 
             if (resposta.status === 'success') {
                 resposta.fases.forEach((fase, index) => {
@@ -430,11 +442,14 @@ function carregarMapaDeFases() {
                     faseDiv.className = `fase ${fase.fase_status}`;
                     faseDiv.id = `fase-${fase.fase_id}`;
                     faseDiv.textContent = index + 1;
+                    console.log("Nivel requerido da fase: " + fase.nivel_requerido);
 
-                    if (fase.fase_status === 'active') {
+                    if (fase.fase_status === 'ativa') {
                         faseDiv.onclick = () => {
-                            window.location.href = `fase.html?fase_id=${fase.fase_id}`;
+                            window.location.href = `fase.html?nivel=${fase.nivel_requerido}`;
                         };
+                    } else if (fase.fase_status === 'bloqueada') {
+                        faseDiv.style.cursor = 'not-allowed';
                     }
 
                     mapContainer.appendChild(faseDiv);
@@ -455,6 +470,546 @@ function carregarMapaDeFases() {
 
     xmlhttp.send(`user_id=${user_id}`);
 }
+
+function carregarFases() {
+    const urlParametros = new URLSearchParams(window.location.search);
+    const nivel = urlParametros.get('nivel');
+
+    if (!nivel) {
+        alert("Nível não encontrado.");
+        window.location.href = "home.html";
+        return;
+    }
+
+    const user_id = verificarAutenticacao();
+
+    const xmlhttp = new XMLHttpRequest();
+    xmlhttp.open('POST', 'https://solumidia.com.br/etec/carregaFases.php', true);
+    //xmlhttp.open('POST', 'http://localhost/gymsaga/carregaFases.php', true);
+    xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+    xmlhttp.onload = function () {
+        console.log(this.responseText);
+        try {
+            const resposta = JSON.parse(this.responseText);
+            const container = document.querySelector('.fase-container');
+
+            container.innerHTML = '';
+
+            if (resposta.status === 'success') {
+                resposta.fases.forEach(fase => {
+                    console.log("fase id=", fase.fase_id);
+                    console.log("Fase completa:", fase);
+                    const card = document.createElement('div');
+                    card.className = 'fase-card';
+                    card.innerHTML = `
+                        <h3 class="fase-nome">${fase.nome}</h3>
+                        <p class="fase-descricao">${fase.descricao}</p>
+                        <div class="info-linhas">
+                            <div class="info-item">
+                                <strong>Dificuldade:</strong> ${fase.dificuldade}
+                            </div>
+                            <div class="info-item">
+                                <strong>Objetivo:</strong> ${fase.objetivo}
+                            </div>
+                        </div>
+                        <div class="info-linhas">
+                            <div class="info-item">
+                                <strong>Status:</strong> ${fase.status}
+                            </div>
+                            <div class="info-item">
+                                <strong>Nível:</strong> ${fase.nivel_requerido}
+                            </div>
+                        </div>
+                        <button class="btn btn w-100" onclick="iniciarFase(${fase.fase_id}, '${fase.status}')">
+                        ${fase.status === 'em andamento' ? 'Continuar' : 'Iniciar fase'}</button>
+                    `;
+                    container.appendChild(card);
+                });
+            } else {
+                container.innerHTML = '<p>Você não possui fases associadas a este nível.</p>';
+            }
+        } catch (error) {
+            console.error("Erro ao processar resposta JSON:", error);
+            alert("Erro ao carregar fases. Tente novamente mais tarde.");
+        }
+    };
+
+    xmlhttp.send(`user_id=${user_id}&nivel=${nivel}`);
+}
+
+function iniciarFase(fase_id, status) {
+    if (status === 'em andamento') {
+        console.log("Fase em andamento.");
+        window.location.href = `treino.html?fase_id=${fase_id}`;
+    }
+
+    const user_id = verificarAutenticacao();
+
+    const xmlhttp = new XMLHttpRequest();
+    xmlhttp.open('POST', 'https://solumidia.com.br/etec/atualizaStatusFase.php', true);
+    //xmlhttp.open('POST', 'http://localhost/gymsaga/status_fase.php', true);
+    xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    console.log(this.responseText);
+    xmlhttp.onload = function () {
+        try {
+            const resposta = JSON.parse(this.responseText);
+            if (resposta.status === 'success') {
+                console.log(resposta.message);
+                window.location.href = `treino.html?fase_id=${fase_id}`;
+            } else {
+                console.error('Erro ao atualizar status:', resposta.message);
+            }
+        } catch (error) {
+            console.error('Erro ao processar resposta JSON:', error);
+        }
+    };
+
+    xmlhttp.send(`user_id=${user_id}&fase_id=${fase_id}`);
+
+}
+
+function carregarTreinos() {
+    const user_id = verificarAutenticacao();
+    const urlParametros = new URLSearchParams(window.location.search);
+    const fase_id = urlParametros.get('fase_id');
+
+    const xmlhttp = new XMLHttpRequest();
+    xmlhttp.open('POST', 'https://solumidia.com.br/etec/carregarTreinos.php', true);
+    //xmlhttp.open('POST', 'http://localhost/gymsaga/carregarTreinos.php', true);
+    xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+    xmlhttp.onload = function () {
+        console.log(this.responseText);
+        try {
+            const resposta = JSON.parse(this.responseText);
+            const container = document.querySelector('.treino-container');
+
+            if (resposta.status === 'success') {
+                resposta.treinos.forEach(treino => {
+                    console.log("treino_id=" + treino.treino_id);
+                    const card = document.createElement('div');
+                    card.className = 'treino-card';
+                    card.innerHTML = `
+                        <h3 class="treino-nome">${treino.nome}</h3>
+                        <p class="treino-descricao">${treino.descricao}</p>
+                        <div class="info-linhas">
+                            <div class="info-item"><strong>Categoria:</strong> ${treino.categoria} </div>
+                            <div class="info-item"><strong>Dificuldade:</strong> ${treino.dificuldade}</div>
+                        </div>
+                        <div class="info-linhas">
+                            <div class="info-item"><strong>Tempo:</strong> ${treino.tempo} min</div>
+                            <div class="info-item"><strong>Status:</strong> ${treino.status} </div>
+                        </div>
+                        <button class="btn btn-primary w-100 mt-2" onclick="iniciarTreino(${treino.treino_id}, ${fase_id}, '${treino.status}')" ${treino.status === 'concluído' ? 'disabled' : ''}>
+                        ${treino.status === 'em andamento' ? 'Continuar' : 'Iniciar Treino'}</button>
+                    `;
+                    container.appendChild(card);
+                });
+            } else {
+                container.innerHTML = '<p>Nenhum treino disponível para esta fase.</p>';
+            }
+        } catch (error) {
+            console.error('Erro ao carregar os treinos:', error);
+        }
+    };
+
+    xmlhttp.send(`user_id=${user_id}&fase_id=${fase_id}`);
+}
+
+function iniciarTreino(treino_id, fase_id, status) {
+
+    if (status === 'em andamento') {
+        console.log("Treino em andamento.");
+        window.location.href = `exercicios.html?treino_id=${treino_id}&fase_id=${fase_id}`;
+    }
+
+    const user_id = verificarAutenticacao();
+
+    const xmlhttp = new XMLHttpRequest();
+    xmlhttp.open('POST', 'https://solumidia.com.br/etec/atualizaStatusTreino.php', true);
+    xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xmlhttp.onload = function () {
+        console.log(this.responseText);
+        try {
+            const resposta = JSON.parse(this.responseText);
+            if (resposta.status === 'success') {
+                console.log(resposta.message);
+                window.location.href = `exercicios.html?treino_id=${treino_id}&fase_id=${fase_id}`;
+            } else {
+                console.error('Erro ao atualizar status:', resposta.message);
+            }
+        } catch (error) {
+            console.error('Erro ao processar resposta JSON:', error);
+        }
+    };
+
+    xmlhttp.send(`user_id=${user_id}&treino_id=${treino_id}`);
+
+}
+
+function carregarExercicios() {
+    const urlParametros = new URLSearchParams(window.location.search);
+    const treino_id = urlParametros.get('treino_id');
+    const fase_id = urlParametros.get('fase_id');
+
+    const user_id = verificarAutenticacao();
+
+    const xmlhttp = new XMLHttpRequest();
+    xmlhttp.open('POST', 'https://solumidia.com.br/etec/carregarExercicios.php', true);
+    xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+    xmlhttp.onload = function () {
+        console.log(this.responseText);
+        try {
+            const resposta = JSON.parse(this.responseText);
+            const exerciciosContainer = document.querySelector('.exercicios-container');
+
+            exerciciosContainer.innerHTML = '';
+
+            if (resposta.status === 'success') {
+                resposta.exercicios.forEach(exercicio => {
+                    const card = document.createElement('div');
+                    card.className = 'exercicios-card';
+                    card.innerHTML = `
+                        <h3 class="exercicios-nome">${exercicio.nome}</h3>
+                        <div class="info-linhas">
+                            <div class="info-item">
+                                <strong>Categoria:</strong> ${exercicio.categoria}
+                            </div>
+
+                            <div class="info-item">
+                                <strong>Grupo muscular:</strong> ${exercicio.grupo_muscular}
+                            </div>
+                        </div>
+                        <div class="info-linhas">
+                            <div class="info-item">
+                                <strong>Status:</strong> ${exercicio.status}
+                            </div>
+                        </div>
+                        <button class="btn btn w-100" onclick="iniciarExercicio(${exercicio.exercicio_id}, ${treino_id}, ${fase_id}, '${exercicio.status}')" ${exercicio.status === 'concluído' ? 'disabled' : ''}>
+                        ${exercicio.status === 'em andamento' ? 'Continuar' : 'Iniciar'}</button>
+                    `;
+                    exerciciosContainer.appendChild(card);
+                });
+            } else {
+                exerciciosContainer.innerHTML = '<p>Nenhum exercício encontrado para este treino.</p>';
+            }
+        } catch (error) {
+            console.error('Erro ao processar a resposta dos exercícios:', error);
+        }
+    };
+
+    xmlhttp.send(`user_id=${user_id}&treino_id=${treino_id}`);
+}
+
+function iniciarExercicio(exercicio_id, treino_id, fase_id, status) {
+
+    if (status === 'em andamento') {
+        console.log("Exercicio em andamento.");
+        window.location.href = `exercicio.html?exercicio_id=${exercicio_id}&treino_id=${treino_id}&fase_id=${fase_id}`;
+    }
+
+    const user_id = verificarAutenticacao();
+
+    const xmlhttp = new XMLHttpRequest();
+    xmlhttp.open('POST', 'https://solumidia.com.br/etec/atualizaStatusExercicio.php', true);
+    xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xmlhttp.onload = function () {
+        console.log(this.responseText);
+        try {
+            const resposta = JSON.parse(this.responseText);
+            if (resposta.status === 'success') {
+                console.log(resposta.message);
+                window.location.href = `exercicio.html?exercicio_id=${exercicio_id}&treino_id=${treino_id}&fase_id=${fase_id}`;
+            } else {
+                console.error('Erro ao iniciar exercicioc:', resposta.message);
+            }
+        } catch (error) {
+            console.error('Erro ao processar resposta JSON:', error);
+        }
+    };
+
+    xmlhttp.send(`user_id=${user_id}&exercicio_id=${exercicio_id}`);
+
+}
+
+function carregarExercicio() {
+    const urlParametros = new URLSearchParams(window.location.search);
+    const exercicio_id = urlParametros.get("exercicio_id");
+
+    const xmlhttp = new XMLHttpRequest();
+    xmlhttp.open('POST', 'https://solumidia.com.br/etec/carregarExercicio.php', true);
+    xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+    xmlhttp.onload = function () {
+        console.log(this.responseText);
+        try {
+            const resposta = JSON.parse(this.responseText);
+
+            if (resposta.status === 'success') {
+                const exercicio = resposta.exercicio;
+
+                document.getElementById('exercicio-nome').textContent = exercicio.nome;
+                document.getElementById('exercicio-descricao').textContent = exercicio.descricao;
+                document.getElementById('grupo-muscular').textContent = exercicio.grupo_muscular;
+
+                if (exercicio.imagem) {
+                    const img = document.getElementById('exercicio-imagem');
+                    img.src = exercicio.imagem;
+                    img.style.display = 'block';
+                }
+
+                if (exercicio.video) {
+                    const video = document.getElementById('exercicio-video');
+                    video.querySelector('source').src = exercicio.video;
+                    video.style.display = 'block';
+                }
+
+                if (exercicio.foto_grupo_muscular) {
+                    const fotoGrupo = document.getElementById('foto-grupo-muscular');
+                    fotoGrupo.src = exercicio.foto_grupo_muscular;
+                    fotoGrupo.style.display = 'block';
+                }
+
+                if (exercicio.segundos) {
+                    document.getElementById('exercicio-segundos').textContent = exercicio.segundos;
+                    document.getElementById('cronometro-container').style.display = 'block';
+                }
+            } 
+
+        } catch (error) {
+            console.error('Erro ao carregar o exercício:', error);
+        }
+    };
+
+    xmlhttp.send(`exercicio_id=${exercicio_id}`);
+}
+
+function finalizarExercicio() {
+    const user_id = verificarAutenticacao();
+    const urlParametros = new URLSearchParams(window.location.search);
+    const exercicio_id = urlParametros.get('exercicio_id');
+    const treino_id = urlParametros.get('treino_id');
+    const fase_id = urlParametros.get('fase_id');
+
+    const series = document.getElementById('series').value;
+    const repeticoes = document.getElementById('repeticoes').value;
+    const peso = document.getElementById('peso').value;
+
+    const xmlhttp = new XMLHttpRequest();
+    xmlhttp.open('POST', 'https://solumidia.com.br/etec/finalizarExercicio.php', true);
+    xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+    xmlhttp.onload = function () {
+        console.log(this.responseText);
+        try {
+            const resposta = JSON.parse(this.responseText);
+            if (resposta.status === 'success') {
+                console.log(resposta.message);
+                console.log("verificando conclusao treino");
+                verificarConclusaoTreino(treino_id, fase_id);
+                abrirModal('modalExercicioConcluido');
+                setTimeout(() => window.location.href = `exercicios.html?treino_id=${treino_id}`, 2000);
+            } else {
+                console.log('Erro ao finalizar o exercício: ' + resposta.message);
+            }
+        } catch (error) {
+            console.error('Erro ao processar resposta JSON:', error);
+        }
+    };
+
+    xmlhttp.send(`user_id=${user_id}&exercicio_id=${exercicio_id}&series=${series}&repeticoes=${repeticoes}&peso=${peso}`);
+}
+
+
+function iniciarCronometro() {
+    let segundos = parseInt(document.getElementById('exercicio-segundos').textContent, 10);
+    const display = document.getElementById('cronometro-display');
+
+    const interval = setInterval(() => {
+        if (segundos > 0) {
+            segundos--;
+            const minutos = Math.floor(segundos / 60);
+            const seg = segundos % 60;
+            display.textContent = `${String(minutos).padStart(2, '0')}:${String(seg).padStart(2, '0')}`;
+        } else {
+            clearInterval(interval);
+        }
+    }, 1000);
+}
+
+function verificarConclusaoTreino(treino_id, fase_id) {
+    const user_id = verificarAutenticacao();
+
+    const xmlhttp = new XMLHttpRequest();
+    xmlhttp.open('POST', 'https://solumidia.com.br/etec/verificaConclusaoTreino.php', true);
+    xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+    xmlhttp.onload = function () {
+        console.log(this.responseText);
+        try {
+            const resposta = JSON.parse(this.responseText);
+
+            if (resposta.status === 'success') {
+                console.log(`Treino ${treino_id} concluido`);
+                console.log("treinos concluidos");
+                console.log("verificando conclusao fase=" + fase_id);
+                verificarConclusaoFase(fase_id);
+            } else {
+                console.log(`Treino ${treino_id} ainda não foi concluído.`);
+            }
+        } catch (error) {
+            console.error('Erro ao processar a resposta JSON:', error);
+        }
+    };
+
+    xmlhttp.send(`user_id=${user_id}&treino_id=${treino_id}`);
+}
+
+
+function verificarConclusaoFase(fase_id) {
+    const user_id = verificarAutenticacao();
+
+    const xmlhttp = new XMLHttpRequest();
+    xmlhttp.open('POST', 'https://solumidia.com.br/etec/verificaConclusaoFase.php', true);
+    xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+    xmlhttp.onload = function () {
+        console.log(this.responseText);
+        try {
+            const resposta = JSON.parse(this.responseText);
+            if (resposta.status === 'success') {
+                console.log(resposta.message);
+                console.log("fase concluida");
+                console.log("fase=" + fase_id);
+                window.location.href = `home.html?modal=modalFeedback&fase_id=${fase_id}`;
+
+            } else {
+                console.log(resposta.message);
+            } 
+
+        } catch (error) {
+            console.error('Erro ao processar a resposta JSON:', error);
+        }
+    };
+
+    xmlhttp.send(`user_id=${user_id}&fase_id=${fase_id}`);
+}
+
+function abrirModalPorURL() {
+    const urlParametros = new URLSearchParams(window.location.search);
+    const modal = urlParametros.get('modal');
+
+    if (modal) {
+        const modalContainer = document.getElementById(modal);
+        if (modalContainer) {
+            modalContainer.classList.remove('hidden');
+        } else {
+            console.error(`Modal id="${modal}" não encontrado.`);
+        }
+    }
+}
+
+function abrirModal(modalId) {
+    const modal = document.getElementById(modalId);
+    if (modal) {
+        modal.classList.remove('hidden');
+    } else {
+        console.error(`Modal id='${modalId}' não encontrado.`);
+    }
+}
+
+function fecharModal(modalId) {
+    const modal = document.getElementById(modalId);
+    if (modal) {
+        modal.classList.add('hidden');
+    } else {
+        console.error(`Modal id='${modalId}' não encontrado.`);
+    }
+}
+
+function enviarFeedback() {
+    const urlParametros = new URLSearchParams(window.location.search);
+    const fase_id = urlParametros.get('fase_id');
+    const user_id = verificarAutenticacao();
+    const nota = document.getElementById('nota').value;
+    const comentario = document.getElementById('comentario').value;
+    const mensagem = document.getElementById('feedbackMessage');
+
+    mensagem.textContent = '';
+
+   if (nota < 0 || nota > 5 || nota === '') {
+        mensagem.textContent = "Insira um valor entre 0 a 5 para nota.";
+        mensagem.style.color = "red";
+        return;
+    }
+
+    const xmlhttp = new XMLHttpRequest();
+    xmlhttp.open('POST', 'https://solumidia.com.br/etec/enviarFeedback.php', true);
+    xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+    xmlhttp.onload = function () {
+        console.log(this.responseText);
+        try {
+            const resposta = JSON.parse(this.responseText);
+            if (resposta.status === 'success') {
+                console.log(resposta.message);
+                mensagem.textContent = "Feedback enviado com sucesso";
+                mensagem.style.color = "green";
+                console.log("indo sortear recompensa");
+                sortearRecompensa();
+            } 
+            else {
+                mensagem.textContent = "Erro ao enviar feedback. " + resposta.message;
+                mensagem.style.color = "red";
+            }
+        } catch (error) {
+            console.error('Erro ao processar resposta JSON:', error);
+        }
+    };
+
+    xmlhttp.send(`user_id=${user_id}&fase_id=${fase_id}&nota=${nota}&comentario=${comentario}`);
+}
+
+function sortearRecompensa(fase_id) {
+    const user_id = verificarAutenticacao();
+
+    const xmlhttp = new XMLHttpRequest();
+    xmlhttp.open('POST', 'https://solumidia.com.br/etec/sorteaRecompensa.php', true);
+    xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+    xmlhttp.onload = function () {
+        console.log(this.responseText);
+        try {
+            const resposta = JSON.parse(this.responseText);
+            if (resposta.status === 'success') {
+                const item = resposta.item;
+                document.getElementById('recompensa-nome').textContent = item.nome;
+                document.getElementById('raridade').textContent = item.raridade;
+
+                const imagem = document.getElementById('recompensa-imagem');
+                if (item.imagem) {
+                    imagem.src = item.imagem;
+                    imagem.style.display = 'block';
+                } else {
+                    imagem.style.display = 'none';
+                }
+
+                abrirModal('modalRecompensa');
+            } else {
+                console.error('Erro ao sortear item:', resposta.message);
+            }
+        } catch (error) {
+            console.error('Erro ao processar resposta JSON:', error);
+        }
+    };
+
+    xmlhttp.send(`user_id=${user_id}&fase_id=${fase_id}`);
+}
+
+
+
 
 
 

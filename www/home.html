@@ -10,7 +10,48 @@
     <link href="css/styles.css" rel="stylesheet">
 </head>
 
-<body onload="verificarAutenticacao(); carregarMapaDeFases()">
+<body onload="verificarAutenticacao(); carregarMapaDeFases(); abrirModalPorURL();">
+
+    <div id="modalBoasVindas" class="modal hidden">
+        <div class="modal-content">
+            <h2>Bem-vindo ao GymSaga!</h2>
+            <p>Esperamos que você aproveite sua jornada para alcançar seus objetivos! Boa sorte jogador</p>
+            <button class="btn btn w-100" onclick="fecharModal('modalBoasVindas')">Fechar</button>
+        </div>
+    </div>    
+
+    <div id="modalFeedback" class="modal hidden">
+        <div class="modal-content">
+            <h2>O que achou da fase?</h2>
+            <p>Deixe seu feedback sobre essa fase</p>
+            
+                <div class="mb-3">
+                    <label for="nota" class="form-label">Nota (0 a 5)</label>
+                    <input type="number" id="nota" name="nota" class="form-control" min="0" max="5" required>
+                </div>
+                <div class="mb-3">
+                    <label for="comentario" class="form-label">Comentário</label>
+                    <textarea id="comentario" name="comentario" class="form-control" rows="4" placeholder="Digite seu comentário (opcional)"></textarea>
+                </div>
+                <button type="submit" class="btn btn w-100" onclick="enviarFeedback()">Enviar Feedback</button>
+                <p id="feedbackMessage"></p>
+        </div>
+    </div>
+
+    <div id="modalRecompensa" class="modal hidden">
+        <div class="modal-content">
+            <h2>Parabéns!</h2>
+            <p>Como recompensa ao concluir a fase você ganhou:</p>
+            <div id="item-recompensa" class="text-center">
+                <img id="recompensa-imagem" src="" alt="Imagem do item" class="img-fluid" style="display: none;">
+                <p id="recompensa-nome"></p>
+                <p id="raridade"></p>
+            </div>
+            <button class="btn btn w-100" onclick="fecharModal('modalRecompensa')">Fechar</button>
+        </div>
+    </div>
+    
+
     <div class="container-fluid">
         <h2 class="home-title text-center">Mapa de Fases</h2>
 

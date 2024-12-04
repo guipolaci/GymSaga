@@ -7,9 +7,8 @@
 
 .container-fluid {
     padding: 20px;
-    margin-bottom: 70px; /* Espaço para evitar que o botão fique atrás da navbar */
-    overflow-y: auto; /* Permite rolagem vertical */
-    height: calc(100% - 70px); /* Ajusta o tamanho com base na altura da navbar */
+    margin-bottom: 70px;  
+    height: calc(100% - 70px);
 }
 
 html {
@@ -42,6 +41,13 @@ body {
     padding: 10px 0;
     border-radius: 4px;
     transition: none;
+}
+
+.btn:disabled {
+    background-color: #A9A9A9; 
+    color: #CCCCCC; 
+    opacity: 0.7; 
+    cursor: not-allowed; 
 }
 
 .btn:hover, .btn:focus {
@@ -107,13 +113,13 @@ body {
 }
 
 .navbar {
-    position: fixed; /* Fixa a posição */
-    bottom: 0; /* Coloca a navbar na parte inferior */
-    width: 100%; /* Garante que ela ocupe toda a largura */
-    z-index: 1000; /* Certifica que fique acima de outros elementos */
-    height: 70px; /* Altura da navbar */
-    background-color: #1a1a1d; /* Cor de fundo para corresponder ao tema */
-    border-top: 2px solid #6a11cb; /* Borda superior */
+    position: fixed;
+    bottom: 0; 
+    width: 100%; 
+    z-index: 1000; 
+    height: 70px;
+    background-color: #1a1a1d; 
+    border-top: 2px solid #6a11cb;
 }
 
 .custom-navbar {
@@ -435,91 +441,6 @@ body {
     background-color: #5c0fb8;
 }
 
-/* Título da Fase */
-.fase-title {
-    font-size: 2.5rem;
-    color: #6a11cb;
-    margin-bottom: 20px;
-    font-weight: bold;
-}
-
-/* Card de cada treino */
-.fase-card, .treino-card {
-    background-color: #121212;
-    border: 2px solid #6a11cb;
-    border-radius: 12px;
-    padding: 10px;
-    margin-bottom: 20px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-    text-align: center;
-}
-
-/* Nome do treino */
-.treino-nome {
-    font-size: 1.5rem;
-    color: #E0E0E0;
-    margin-bottom: 15px;
-}
-
-/* Botão "Começar" */
-.btn-comecar {
-    background-color: #6a11cb;
-    color: #E0E0E0;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 8px;
-    margin-bottom: 15px;
-    transition: background-color 0.3s ease;
-}
-
-.btn-comecar:hover {
-    background-color: #5c0fb8;
-}
-
-/* Status do exercício */
-.descricao {
-    font-size: 1rem;
-    color: #E0E0E0;
-    margin-top: 10px;
-}
-
-.exercicio-container {
-    background-color: #121212;
-    border: 2px solid #6a11cb;
-    border-radius: 12px;
-    padding: 20px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-    margin-bottom: 20px;
-}
-
-/* Imagem do Exercício */
-.exercicio-img {
-    width: 100%;
-    max-width: 250px;
-    margin: 20px auto;
-    display: block;
-    border-radius: 12px;
-}
-
-/* Títulos */
-.descricao-titulo, .descricao-exercicio {
-    font-size: 1rem;
-    color: #E0E0E0;
-    margin-top: 10px;
-}
-
-/* Pontos do Exercício */
-.pontos-exercicio {
-    font-size: 1rem;
-    color: #E0E0E0;
-    margin-top: 10px;
-}
-
-.pontos {
-    color: #07dde8; /* Destaque azul */
-    font-weight: bold;
-}
-
 /* Input Group */
 .input-group {
     display: flex;
@@ -577,7 +498,6 @@ body {
     width: fit-content;
 }
 
-/* Container do Mapa */
 .map-container {
     display: flex;
     flex-direction: column;
@@ -592,32 +512,281 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 18px;
-    margin: 10px 0;
-    color: #fff;
-    cursor: default;
+    text-align: center;
+    font-size: 16px;
+    color: white; 
+    font-weight: bold;
 }
 
-.fase.completed {
-    background-color: #5cb85c; /* Verde */
+.completada {
+    background-color: #350a63;
+}
+.ativa {
+    background-color: #6a11cb;
     cursor: pointer;
 }
-
-.fase.active {
-    background-color: #6a11cb; /* Roxo */
-    cursor: pointer;
-}
-
-.fase.locked {
-    background-color: #ccc; /* Cinza */
+.bloqueada {
+    background-color: #444;
     cursor: not-allowed;
 }
-
-.path.vertical {
-    width: 2px;
-    height: 20px;
+.path {
+    width: 5px;
+    height: 50px;
     background-color: #6a11cb;
+    margin: auto;
 }
+
+.fase-card {
+    background-color: #1a1a1a; 
+    border: 2px solid #6a11cb; 
+    border-radius: 10px;
+    padding: 15px 20px; 
+    width: 100%; 
+    margin: 20px auto;
+    text-align: center; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.fase-titulo{
+    text-align: center;
+    font-size: 2.5rem;
+    color: #6a11cb;
+    font-weight: bold;
+    margin: 0 auto 20px; 
+    border: 2px solid #6a11cb; 
+    border-radius: 10px; 
+    padding: 10px;
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    width: fit-content;
+}
+
+.fase-nome {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 5px; 
+    text-align: center; 
+}
+
+.fase-descricao {
+    font-size: 14px;
+    margin-bottom: 15px;
+    color: #807e7e;
+}
+
+.info-linhas {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0; 
+}
+
+.info-item {
+    flex: 1; 
+    text-align: center; 
+    font-size: 14px;
+    padding: 5px;
+}
+
+.treino-card {
+    background-color: #1a1a1a;
+    border: 2px solid #6a11cb;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px 0;
+    color: #fff;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.treino-titulo{
+    text-align: center;
+    font-size: 2.5rem;
+    color: #6a11cb;
+    font-weight: bold;
+    margin: 0 auto 20px; 
+    border: 2px solid #6a11cb; 
+    border-radius: 10px; 
+    padding: 10px;
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    width: fit-content;
+}
+
+.treino-nome {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 5px; 
+    text-align: center; 
+}
+
+.treino-descricao {
+    font-size: 14px;
+    margin-bottom: 15px;
+    color: #807e7e;
+}
+
+.exercicios-card {
+    background-color: #1a1a1a; 
+    border: 2px solid #6a11cb; 
+    border-radius: 10px;
+    padding: 15px 20px; 
+    width: 100%; 
+    margin: 20px auto;
+    text-align: center; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.exercicios-titulo{
+    text-align: center;
+    font-size: 2.5rem;
+    color: #6a11cb;
+    font-weight: bold;
+    margin: 0 auto 20px; 
+    border: 2px solid #6a11cb; 
+    border-radius: 10px; 
+    padding: 10px;
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    width: fit-content;
+}
+
+.exercicios-nome {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 5px; 
+    text-align: center; 
+}
+
+.exercicios-descricao {
+    font-size: 14px;
+    margin-bottom: 15px;
+    color: #807e7e;
+}
+
+.exercicio-titulo {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #6a11cb;
+    font-weight: bold;
+    margin: 0 auto 20px; 
+    border: 2px solid #6a11cb; 
+    border-radius: 10px; 
+    padding: 10px;
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    width: fit-content;
+}
+
+.exercicio-descricao {
+    font-size: 14px;
+    margin: 0;
+    color: #807e7e;
+}
+
+.inputs-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px; 
+}
+
+.inputs-container .form-group {
+    flex: 1;
+}
+
+.inputs-container .form-control {
+    text-align: center; 
+}
+
+.cronometro-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.cronometro {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.cronometro-display {
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+}
+
+.cronometro-button {
+    background-color: #6a11cb;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.cronometro-message {
+    margin-top: 10px;
+    font-size: 14px;
+    color: white;
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: #1c1c1c;
+    color: #e0e0e0;
+    padding: 20px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 500px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.modal-content h2 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+.modal-content p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.modal-content .btn {
+    background-color: #6a11cb;
+    color: #e0e0e0;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.modal.hidden {
+    display: none;
+}
+
+
+
 
 
 

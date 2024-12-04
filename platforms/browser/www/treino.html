@@ -10,16 +10,10 @@
     <link href="css/styles.css" rel="stylesheet">
 </head>
 
-<body onclick="verificarAutenticacao()">
+<body onload="verificarAutenticacao(); carregarTreinos()">
     <div class="container-fluid">
-        <h2 class="fase-title text-center">Treinos</h2>
-
-        <div class="treino-card">
-            <h3 class="treino-nome">Nome treino</h3>
-            <p class="descricao">Descrição</p>
-            <button class="btn btn-comecar" onclick="window.location.href='exercicios.html';">Iniciar</button>
-        </div>
-
+        <h2 class="treino-titulo text-center">Treinos</h2>
+        <div class="treino-container"></div>
     </div>
 
     <nav class="navbar fixed-bottom navbar-light bg-light custom-navbar">

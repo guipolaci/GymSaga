@@ -10,21 +10,11 @@
     <link href="css/styles.css" rel="stylesheet">
 </head>
 
-<body onclick="verificarAutenticacao()">
+<body onload="verificarAutenticacao(); carregarMapaDeFases()">
     <div class="container-fluid">
         <h2 class="home-title text-center">Mapa de Fases</h2>
 
         <div class="map-container">
-            <div class="fase" id="fase-1" data-status="completed" onclick="window.location.href='fase.html';">1</div>
-            <div class="path vertical"></div>
-
-            <div class="fase" id="fase-2" data-status="active">2</div>
-            <div class="path vertical"></div>
-
-            <div class="fase" id="fase-3" data-status="locked">3</div>
-            <div class="path vertical"></div>
-
-            <div class="fase" id="fase-4" data-status="locked">4</div>
         </div>
     </div>
 

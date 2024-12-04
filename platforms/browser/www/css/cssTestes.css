@@ -8,7 +8,7 @@
 .container-fluid {
     padding: 20px;
     margin-bottom: 70px; /* Espaço para evitar que o botão fique atrás da navbar */
-    overflow-y: auto; /* Permite rolagem vertical */
+     /* Permite rolagem vertical */
     height: calc(100% - 70px); /* Ajusta o tamanho com base na altura da navbar */
 }
 

@@ -10,15 +10,11 @@
     <link href="css/styles.css" rel="stylesheet">
 </head>
 
-<body onclick="verificarAutenticacao()">
-    <div class="container-fluid">
-        <h2 class="fase-title text-center">Fases</h2>
+<body onload="verificarAutenticacao(); carregarFases()">
 
-        <div class="fase-card">
-            <h3 class="treino-nome">Nome Fase</h3>
-            <p class="descricao"> Descrição</p>
-            <button class="btn btn-comecar" onclick="window.location.href='treino.html';">Iniciar</button>
-        </div>
+    <div class="container-fluid">
+        <h2 class="fase-titulo text-center">Fases</h2>
+        <div class="fase-container"></div>
     </div>
     <nav class="navbar fixed-bottom navbar-light bg-light custom-navbar">
         <div class="container d-flex justify-content-around">

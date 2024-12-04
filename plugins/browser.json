@@ -15,9 +15,6 @@
     },
     "cordova-plugin-splashscreen": {
       "PACKAGE_NAME": "com.exercicio.gamificado"
-    },
-    "cordova-plugin-whitelist": {
-      "PACKAGE_NAME": "com.exercicio.gamificado"
     }
   },
   "dependent_plugins": {}

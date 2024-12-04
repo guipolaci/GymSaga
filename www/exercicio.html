@@ -10,28 +10,64 @@
     <link href="css/styles.css" rel="stylesheet">
 </head>
 
-<body onclick="verificarAutenticacao()">
+<body onload="verificarAutenticacao(); carregarExercicio()">
+
+    <div id="modalExercicioConcluido" class="modal hidden">
+        <div class="modal-content">
+            <h2>Parabéns!</h2>
+            <p>Você concluiu o exercício com sucesso.</p>
+        </div>
+    </div>
+
     <div class="container-fluid">
-        <h2 class="fase-title text-center">Nome do Exercício</h2>
 
-        <div class="exercicio-container text-center">
-            <img src="img/exercicio.png" alt="Imagem do Exercício" class="exercicio-img">
-            
-            <p class="descricao-titulo">Descrição do Exercício</p>
-            <hr>
+        <div class="exercicio-container">
+            <h3 id="exercicio-nome" class="exercicio-titulo text-center">Nome do Exercício</h3>
+            <p id="exercicio-descricao" class="exercicio-descricao text-center">Descrição do exercício.</p>
 
-            <!-- Inputs de Repetições, Séries e Carga -->
-            <div class="input-group">
-                <input type="number" placeholder="Repetições" class="form-control">
-                <input type="number" placeholder="Séries" class="form-control">
-                <input type="number" placeholder="Carga (kg)" class="form-control">
+            <div class="media-container text-center mb-3">
+                <img id="exercicio-imagem" class="img-fluid rounded" src="" alt="Imagem do exercício"
+                    style="display: none;">
+                <video id="exercicio-video" class="img-fluid rounded" controls style="display: none;">
+                    <source src="" type="video/mp4">
+                    Seu navegador não suporta o elemento de vídeo.
+                </video>
             </div>
 
-            <p class="descricao-exercicio mt-4">Descrição do que fazer</p>
-            <p class="pontos-exercicio">Pontos do exercício: <span class="pontos">10pts</span></p>
+            <div class="exercicio-info">
+                <p><strong>Grupo Muscular:</strong> <span id="grupo-muscular">--</span></p>
+                <img id="foto-grupo-muscular" class="img-fluid rounded" src="" alt="Foto do grupo muscular"
+                    style="display: none;">
 
-            <button class="btn btn-finalizar">Finalizar Exercício</button>
+                <p><strong>Segundos:</strong> <span id="exercicio-segundos">--</span></p>
+            </div>
+
+            <div class="cronometro-container mb-3" id="cronometro-container" style="display: none;">
+                <label class="form-label">Cronômetro</label>
+                <div class="cronometro" id="cronometro">
+                    <span class="cronometro-display" id="cronometro-display">00:00</span>
+                    <button class="cronometro-button" onclick="iniciarCronometro()">Iniciar</button>
+                </div>
+            </div>
+
+            <div class="inputs-container">
+                <div class="form-group">
+                    <label for="series" class="form-label">Séries</label>
+                    <input type="number" id="series" class="form-control" placeholder="Séries">
+                </div>
+                <div class="form-group">
+                    <label for="repeticoes" class="form-label">Repetições</label>
+                    <input type="number" id="repeticoes" class="form-control" placeholder="Reps">
+                </div>
+                <div class="form-group">
+                    <label for="peso" class="form-label">Peso (kg)</label>
+                    <input type="number" id="peso" class="form-control" placeholder="Peso">
+                </div>
+            </div>
+
+            <button class="btn btn w-100" onclick="finalizarExercicio()">Finalizar Exercício</button>
         </div>
+
     </div>
 
     <nav class="navbar fixed-bottom navbar-light bg-light custom-navbar">
