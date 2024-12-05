@@ -11,6 +11,7 @@
 </head>
 
 <body onload="verificarAutenticacao(); carregarDadosParaEdicao()">
+
     <div class="container-fluid">
         <div class="form-group text-center mt-4">
             <label for="foto" class="form-label">Foto</label>
@@ -45,7 +46,8 @@
             <label for="data-nascimento" class="form-label">Data de Nascimento</label>
             <input type="date" id="data-nascimento" class="form-control">
         </div>
-        <button class="btn btn w-100" onclick="salvarAlteracoesPerfil(event)">Salvar Alterações</button>
+        <button class="btn btn w-100" onclick="salvarAlteracoesPerfil(event)">Salvar Alterações</button><br>
+        <button class="btn btn w-100" onclick="voltarPagina()" style="margin-top: 10px;">Cancelar</button>
         <p id="perfilMessage"></p>
     </div>
 

@@ -810,7 +810,7 @@ function finalizarExercicio() {
                 console.log("verificando conclusao treino");
                 verificarConclusaoTreino(treino_id, fase_id);
                 abrirModal('modalExercicioConcluido');
-                setTimeout(() => window.location.href = `exercicios.html?treino_id=${treino_id}`, 2000);
+                setTimeout(() => window.location.href = `exercicios.html?treino_id=${treino_id}&fase_id=${fase_id}`, 2000);
             } else {
                 console.log('Erro ao finalizar o exercício: ' + resposta.message);
             }
@@ -853,9 +853,12 @@ function verificarConclusaoTreino(treino_id, fase_id) {
 
             if (resposta.status === 'success') {
                 console.log(`Treino ${treino_id} concluido`);
-                console.log("treinos concluidos");
+                console.log("total exercicios=" + resposta.totalExercicios);
+                console.log("concluidos=" + resposta.concluidos);
+                console.log("treinos concluidos da fase_id=" + fase_id);
                 console.log("verificando conclusao fase=" + fase_id);
-                verificarConclusaoFase(fase_id);
+                verificarConclusaoFase(fase_id, () => {setTimeout(() => window.location.href = `treino.html?fase_id=${fase_id}`, 2000);});
+                
             } else {
                 console.log(`Treino ${treino_id} ainda não foi concluído.`);
             }
@@ -868,7 +871,7 @@ function verificarConclusaoTreino(treino_id, fase_id) {
 }
 
 
-function verificarConclusaoFase(fase_id) {
+function verificarConclusaoFase(fase_id, callback) {
     const user_id = verificarAutenticacao();
 
     const xmlhttp = new XMLHttpRequest();
@@ -882,11 +885,16 @@ function verificarConclusaoFase(fase_id) {
             if (resposta.status === 'success') {
                 console.log(resposta.message);
                 console.log("fase concluida");
+                console.log("total treinos=" + resposta.totalTreinos);
+                console.log("concluidos=" + resposta.concluidos);
                 console.log("fase=" + fase_id);
-                window.location.href = `home.html?modal=modalFeedback&fase_id=${fase_id}`;
+                window.location.href = `home.html?fase_id=${fase_id}&modal=modalFeedback`;
+                //window.location.href = `home.html?fase_id=${fase_id}`;
 
             } else {
                 console.log(resposta.message);
+                console.log("a fase ainda não foi concluida");
+                if (typeof callback === 'function') callback();
             } 
 
         } catch (error) {
@@ -958,7 +966,8 @@ function enviarFeedback() {
                 mensagem.textContent = "Feedback enviado com sucesso";
                 mensagem.style.color = "green";
                 console.log("indo sortear recompensa");
-                sortearRecompensa();
+                fecharModal("modalFeedback");
+                sortearRecompensa(fase_id);
             } 
             else {
                 mensagem.textContent = "Erro ao enviar feedback. " + resposta.message;
@@ -997,6 +1006,7 @@ function sortearRecompensa(fase_id) {
                 }
 
                 abrirModal('modalRecompensa');
+
             } else {
                 console.error('Erro ao sortear item:', resposta.message);
             }
@@ -1008,7 +1018,13 @@ function sortearRecompensa(fase_id) {
     xmlhttp.send(`user_id=${user_id}&fase_id=${fase_id}`);
 }
 
-
+function voltarPagina() {
+    if (document.referrer) {
+        window.history.back();
+    } else {
+        window.location.href = "home.html";
+    }
+}
 
 
 

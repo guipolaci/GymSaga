@@ -8,18 +8,14 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="css/styles.css" rel="stylesheet">
+    <link rel="icon" href="img/logo.png">
+    
 </head>
 
-<body onclick="verificarAutenticacao()">
+<body onload="verificarAutenticacao(); carregarTreinos()">
     <div class="container-fluid">
-        <h2 class="fase-title text-center">Treinos</h2>
-
-        <div class="treino-card">
-            <h3 class="treino-nome">Nome treino</h3>
-            <p class="descricao">Descrição</p>
-            <button class="btn btn-comecar" onclick="window.location.href='exercicios.html';">Iniciar</button>
-        </div>
-
+        <h2 class="treino-titulo text-center">Treinos</h2>
+        <div class="treino-container"></div>
     </div>
 
     <nav class="navbar fixed-bottom navbar-light bg-light custom-navbar">
@@ -40,6 +36,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/index.js"></script>
+    
 </body>
 
 </html>
